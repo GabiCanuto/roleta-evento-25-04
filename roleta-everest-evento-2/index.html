@@ -593,33 +593,26 @@
   <audio id="loseSound" preload="auto" src="https://assets.mixkit.co/active_storage/sfx/270/270-preview.mp3"></audio>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzabw9RRWKgzbSo1o_IshAB3rE7mdOCVGk6CIVr5wssiedQ0ry796Ze-8rDrvAwaGuV/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzOLdu7fCGVmiux0D6khc-B5SXKm-PYl5kZlN5PpqmDb-JyAWJLpVFuDNAai_VBAjihYQ/exec";
+  const prizes = [
+    { label: "Cordão", color: "#B100FF", icon: "fa-tag" },
+    { label: "Chaveiro", color: "#5B8CFF", icon: "fa-key" },
+    { label: "Bolsa Take", color: "#FF174D", icon: "fa-bag-shopping" },
+    { label: "Fone Everest", color: "#18A8E8", icon: "fa-headphones" },
+    { label: "Aromatizante", color: "#7ED957", icon: "fa-spray-can-sparkles" },
+    { label: "Voucher 100", color: "#FFD700", icon: "fa-percent" },
+    { label: "Foto c/ equipe", color: "#E53170", icon: "fa-camera" }
+  ];
 
-    const prizes = [
-      { label: "Voucher 100", color: "#FFD700", icon: "fa-percent" },
-      { label: "Voucher 50", color: "#10E07A", icon: "fa-ticket" },
-      { label: "Foto c/ time", color: "#E53170", icon: "fa-camera" },
-      { label: "Abraço do time", color: "#FF9800", icon: "fa-hand-holding-heart" },
-      { label: "Abridor", color: "#FF7A00", icon: "fa-bottle-water" },
-      { label: "Cordão", color: "#B100FF", icon: "fa-tag" },
-      { label: "Bolsa Take", color: "#FF174D", icon: "fa-bag-shopping" },
-      { label: "Fone", color: "#18A8E8", icon: "fa-headphones" },
-      { label: "Copo Térmico", color: "#B100FF", icon: "fa-mug-hot" },
-      { label: "Copo Americano", color: "#FF9800", icon: "fa-whiskey-glass" }
-    ];
-
-    const weightedPrizes = [
-      { label: "Fone", weight: 1.43 },
-      { label: "Bolsa Take", weight: 4.29 },
-      { label: "Copo Térmico", weight: 1.43 },
-      { label: "Abridor", weight: 5.71 },
-      { label: "Cordão", weight: 8.57 },
-      { label: "Copo Americano", weight: 0.57 },
-      { label: "Voucher 100", weight: 28.57 },
-      { label: "Voucher 50", weight: 28.57 },
-      { label: "Foto c/ time", weight: 10.43 },
-      { label: "Abraço do time", weight: 10.43 }
-    ];
+   const weightedPrizes = [
+  { label: "Cordão", weight: 14.29 },
+  { label: "Chaveiro", weight: 14.29 },
+  { label: "Bolsa Take", weight: 14.29 },
+  { label: "Fone Everest", weight: 4.29 },
+  { label: "Aromatizante", weight: 7.14 },
+  { label: "Voucher 100", weight: 14.29 },
+  { label: "Foto c/ equipe", weight: 31.43 }
+];
 
     const wheelGroup = document.getElementById("wheelGroup");
     const spinBtn = document.getElementById("spinBtn");
@@ -1055,21 +1048,16 @@
         if (selectedPrize.label === "Voucher 100") {
           mensagem = `${participant.nome}, você ganhou Voucher 100! 🎉
 Válido para compras acima de R$200.`;
-          message.textContent = "Parabéns! Você ganhou ✨";
-          launchConfetti();
-          playSound(winSound);
-        } else if (selectedPrize.label === "Voucher 50") {
-          mensagem = `${participant.nome}, você ganhou Voucher 50! 🎉
-Válido para compras acima de R$100.`;
-          message.textContent = "Parabéns! Você ganhou ✨";
-          launchConfetti();
-          playSound(winSound);
+        } else if (selectedPrize.label === "Foto c/ equipe") {
+          mensagem = `${participant.nome}, você ganhou uma Foto com a equipe Everest! 📸
+Capricha no sorriso e bora registrar esse momento.`;
         } else {
           mensagem = `${participant.nome}, você ganhou: ${selectedPrize.label} 🎁`;
-          message.textContent = "Parabéns! Você ganhou ✨";
-          launchConfetti();
-          playSound(winSound);
         }
+
+        message.textContent = "Parabéns! Você ganhou ✨";
+        launchConfetti();
+        playSound(winSound);
 
         resultText.textContent = mensagem;
         resultBox.classList.add("show");
